@@ -9,7 +9,7 @@ services:
   app:
     image: thielserra/ubuntu2204-apache-php71
     tty: true
-    container_name: ${CONTAINER_NAME}
+    container_name: ${INTEGRADOR_CONTAINER_NAME}
     entrypoint: sh /docker-entrypoint.sh 
     restart: "always"
     volumes:
@@ -17,6 +17,6 @@ services:
       - "./apache/sites-available:/etc/apache2/sites-available"
       - "./apache/logs:/var/log/apache2"
     labels:
-      - "traefik.http.routers.${CONTAINER_NAME}.rule=Host(`${CONTAINER_NAME}.docker.localhost`)"
+      - "traefik.http.routers.${INTEGRADOR_CONTAINER_NAME}.rule=Host(`${INTEGRADOR_CONTAINER_NAME}.docker.localhost`)"
     networks:
       - default
