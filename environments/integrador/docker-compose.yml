@@ -7,7 +7,7 @@ networks:
     
 services: 
   app:
-    image: thielserra/ubuntu2204-apache-php71
+    image: thielserra/ubuntu2204-apache-php71:v2
     tty: true
     container_name: ${INTEGRADOR_CONTAINER_NAME}
     entrypoint: sh /docker-entrypoint.sh 

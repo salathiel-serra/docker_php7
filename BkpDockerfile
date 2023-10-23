@@ -23,7 +23,7 @@ RUN export EDITOR=/usr/bin/nano
 RUN git config --global http.sslVerify false
 
 # COPIA CODIGO DA APLICAÇÃO PARA CONTAINER
-COPY ../ /var/www/html/
+COPY ../../../ /var/www/html/
 
 # CONFIGURA VARIÁVEIS DE AMBIENTE PARA APACHE
 ENV APACHE_RUN_USER www-data
