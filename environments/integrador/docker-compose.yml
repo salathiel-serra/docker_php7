@@ -1,0 +1,22 @@
+version: "3.8"
+
+networks:
+  default:
+    external:
+      name: ${NETWORK_NAME}
+    
+services: 
+  app:
+    image: thielserra/ubuntu2204-apache-php71
+    tty: true
+    container_name: ${CONTAINER_NAME}
+    entrypoint: sh /docker-entrypoint.sh 
+    restart: "always"
+    volumes:
+      - "../:/var/www/html"
+      - "./apache/sites-available:/etc/apache2/sites-available"
+      - "./apache/logs:/var/log/apache2"
+    labels:
+      - "traefik.http.routers.${CONTAINER_NAME}.rule=Host(`${CONTAINER_NAME}.docker.localhost`)"
+    networks:
+      - default
